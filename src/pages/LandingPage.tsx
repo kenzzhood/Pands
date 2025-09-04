@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Globe } from "@/components/ui/globe"
-import { ArrowRight, User, Building2, Code, Palette, Terminal } from "lucide-react"
+import { ArrowRight, User, Building2, Code, Palette, Terminal, Mic, BookOpen, MessageSquare } from "lucide-react"
 
 const LandingPage = () => {
   return (
