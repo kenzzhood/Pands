@@ -1,3 +1,4 @@
+import React from "react"
 import AudioUpload from "@/components/AudioUpload"
 import BlogManager from "@/components/BlogManager"
 import Chatbot from "@/components/Chatbot"
@@ -6,7 +7,6 @@ import { Activity, TrendingUp, Users, Database } from "lucide-react"
 const DashboardPage = () => {
   return (
     <div className="space-y-8 pb-8">
-      {/* Dashboard Header */}
       <div className="rounded-2xl p-8 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-2xl relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 animate-pulse" />
         <div className="relative z-10">
@@ -17,7 +17,6 @@ const DashboardPage = () => {
         </div>
       </div>
       
-      {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div className="p-6 rounded-xl bg-gradient-to-br from-cyan-500/10 to-cyan-600/5 backdrop-blur-sm border border-cyan-500/20 group hover:scale-105 transition-transform">
           <div className="flex items-center justify-between mb-3">
@@ -56,7 +55,6 @@ const DashboardPage = () => {
         </div>
       </div>
       
-      {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
           <AudioUpload />

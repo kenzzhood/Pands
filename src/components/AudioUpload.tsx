@@ -1,3 +1,4 @@
+import React from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -34,11 +35,9 @@ const AudioUpload = () => {
     simulateProgress()
     try {
       const res = await api.ingestAudio(sessionId, userId, blogId, file)
-      // Persist latest context for the chatbot
       localStorage.setItem("lastSessionId", sessionId)
       localStorage.setItem("lastUserId", userId)
       localStorage.setItem("lastBlogId", blogId)
-      // Notify same-tab listeners (storage event doesn't fire in same tab)
       window.dispatchEvent(new CustomEvent("panda-context-updated"))
       setMessage(res?.message || "Uploaded and ingested successfully.")
     } catch (e: any) {

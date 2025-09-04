@@ -1,3 +1,4 @@
+import React from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -31,7 +32,6 @@ const RegisterPage = () => {
     <div className="min-h-[80vh] grid place-items-center px-4">
       <div className="w-full max-w-md">
         <div className="rounded-3xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 p-8 shadow-2xl shadow-pink-500/10 relative overflow-hidden">
-          {/* Animated background */}
           <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-pink-500/5 to-cyan-500/5 animate-pulse" />
           
           <div className="relative z-10">
@@ -156,8 +156,8 @@ const RegisterPage = () => {
               </TabsContent>
             </Tabs>
           </div>
+        </div>
       </div>
-    </div>
     </div>
   )
 }

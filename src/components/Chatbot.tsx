@@ -1,3 +1,4 @@
+import React from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -81,7 +82,6 @@ const Chatbot = () => {
         </CardTitle>
       </CardHeader>
       <CardContent className="flex-grow space-y-4 relative z-10">
-        {/* Context Configuration */}
         <div className="space-y-3 p-4 rounded-xl bg-white/5 border border-white/10">
           <div className="flex items-center space-x-2 mb-3">
             <Settings className="w-4 h-4 text-slate-400" />
@@ -142,7 +142,6 @@ const Chatbot = () => {
           </div>
         </div>
         
-        {/* Chat Messages */}
         <ScrollArea className="h-[380px] pr-4">
           <div className="space-y-4">
             {messages.length === 0 && (
@@ -179,7 +178,6 @@ const Chatbot = () => {
         </ScrollArea>
       </CardContent>
       
-      {/* Chat Input */}
       <div className="p-6 border-t border-white/10 relative z-10">
         <div className="flex space-x-3">
           <div className="relative flex-1">
