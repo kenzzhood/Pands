@@ -288,6 +288,3 @@ export const Html = () => {
 };
 
 export default Html;
-    }
-  )
-}
