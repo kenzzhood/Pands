@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { Button } from '@/components/ui/button'
+import { ArrowRight } from 'lucide-react'
 import { LavaLamp } from './fluid-blob'
 
 export const Html = () => {
@@ -65,6 +68,21 @@ export const Html = () => {
           >
             {subtitle}
           </div>
+        </div>
+        
+        {/* Get Started Button */}
+        <div className={`mt-12 transition-all duration-1000 pointer-events-auto ${
+          subtitleVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-8'
+        }`}
+        style={{ transitionDelay: '1600ms' }}>
+          <Link to="/register">
+            <Button className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white font-bold px-12 py-6 rounded-2xl shadow-2xl border-0 inline-flex items-center space-x-3 text-xl transform hover:scale-105 transition-all duration-300">
+              <span>Get Started</span>
+              <ArrowRight className="w-6 h-6" />
+            </Button>
+          </Link>
         </div>
       </div>
 
