@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Progress } from "@/components/ui/progress"
 import { useState } from "react"
-import { Upload, Mic, Waveform, CheckCircle } from "lucide-react"
+import { Upload, Mic, AudioWaveform as Waveform, CheckCircle } from "lucide-react"
 import api from "@/services/api"
 
 const AudioUpload = () => {
