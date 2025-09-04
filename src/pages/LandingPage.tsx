@@ -64,3 +64,5 @@ const LandingPage = () => {
               <p className="text-gray-600 italic">Component code available in /components/ui/hero-futuristic.tsx</p>
   )
 }
+  )
+}
