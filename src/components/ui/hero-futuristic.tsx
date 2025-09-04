@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { LavaLamp } from './fluid-blob'
 
 export const Html = () => {
   const titleWords = 'Build Your Dreams'.split(' ')
@@ -17,28 +18,17 @@ export const Html = () => {
   }, [visibleWords, titleWords.length])
 
   return (
-    <div className="h-screen relative overflow-hidden bg-gradient-to-br from-black via-purple-900/20 to-black">
-      {/* Animated background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-purple-500/10 to-pink-500/5 animate-pulse" />
-      
-      {/* Floating particles effect */}
-      <div className="absolute inset-0">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 3}s`
-            }}
-          />
-        ))}
+    <div className="h-screen relative overflow-hidden">
+      {/* Fluid blob background covering entire page */}
+      <div className="fixed inset-0 z-0">
+        <LavaLamp />
       </div>
       
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/60 z-10" />
+      
       {/* Main content */}
-      <div className="h-screen uppercase items-center w-full absolute z-10 pointer-events-none px-10 flex justify-center flex-col">
+      <div className="h-screen uppercase items-center w-full absolute z-20 pointer-events-none px-10 flex justify-center flex-col">
         <div className="text-3xl md:text-5xl xl:text-6xl 2xl:text-7xl font-extrabold">
           <div className="flex space-x-2 lg:space-x-6 overflow-hidden text-white">
             {titleWords.map((word, index) => (
@@ -51,7 +41,8 @@ export const Html = () => {
                 }`}
                 style={{ 
                   transitionDelay: `${index * 200}ms`,
-                  textShadow: '0 0 20px rgba(139, 92, 246, 0.5)'
+                  textShadow: '0 0 30px rgba(0, 0, 0, 0.8), 0 0 60px rgba(139, 92, 246, 0.6)',
+                  filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5))'
                 }}
               >
                 {word}
@@ -68,7 +59,8 @@ export const Html = () => {
             }`}
             style={{ 
               transitionDelay: '1200ms',
-              textShadow: '0 0 15px rgba(236, 72, 153, 0.5)'
+              textShadow: '0 0 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(236, 72, 153, 0.5)',
+              filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5))'
             }}
           >
             {subtitle}
@@ -77,8 +69,8 @@ export const Html = () => {
       </div>
 
       {/* Scroll button */}
-      <button className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 text-white border border-white/30 px-6 py-3 rounded-full hover:bg-white/10 transition-all duration-300 flex items-center space-x-2 pointer-events-auto group">
-        <span>Scroll to explore</span>
+      <button className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30 text-white border border-white/50 bg-black/40 backdrop-blur-sm px-6 py-3 rounded-full hover:bg-black/60 transition-all duration-300 flex items-center space-x-2 pointer-events-auto group shadow-lg">
+        <span className="font-medium" style={{ textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)' }}>Scroll to explore</span>
         <svg 
           width="22" 
           height="22" 
@@ -91,11 +83,6 @@ export const Html = () => {
           <path d="M6 12L11 17L16 12" stroke="white" strokeWidth="2" strokeLinecap="round"/>
         </svg>
       </button>
-      
-      {/* Geometric shapes */}
-      <div className="absolute top-20 left-20 w-32 h-32 border border-cyan-500/20 rounded-full animate-spin" style={{ animationDuration: '20s' }} />
-      <div className="absolute bottom-20 right-20 w-24 h-24 border border-purple-500/20 rotate-45 animate-pulse" />
-      <div className="absolute top-1/2 right-10 w-16 h-16 border border-pink-500/20 rounded-lg animate-bounce" style={{ animationDuration: '3s' }} />
     </div>
   )
 }
