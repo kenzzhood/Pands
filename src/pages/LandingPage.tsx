@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
+import { Globe } from "@/components/ui/globe"
 import { ArrowRight, Terminal, FileText, Code } from "lucide-react"
 
 const LandingPage = () => {
@@ -258,15 +259,14 @@ export const Html = () => {
   }, [visibleWords, titleWords.length]);
 
   return (
-    <div className="h-svh">
-      <div className="h-svh uppercase items-center w-full absolute z-60 pointer-events-none px-10 flex justify-center flex-col">
+    <div className="h-screen">
+      <div className="h-screen uppercase items-center w-full absolute z-10 pointer-events-none px-10 flex justify-center flex-col">
         <div className="text-3xl md:text-5xl xl:text-6xl 2xl:text-7xl font-extrabold">
           <div className="flex space-x-2 lg:space-x-6 overflow-hidden text-white">
             {titleWords.map((word, index) => (
               <div
                 key={index}
-                className={index < visibleWords ? 'fade-in' : ''}
-                style={{ animationDelay: \`\${index * 0.13 + (delays[index] || 0)}s\`, opacity: index < visibleWords ? undefined : 0 }}
+                className={\`transition-opacity duration-1000 ${index < visibleWords ? 'opacity-100' : 'opacity-0'}`}
               >
                 {word}
               </div>
@@ -274,121 +274,20 @@ export const Html = () => {
           </div>
         </div>
         <div className="text-xs md:text-xl xl:text-2xl 2xl:text-3xl mt-2 overflow-hidden text-white font-bold">
-          <div
-            className={subtitleVisible ? 'fade-in-subtitle' : ''}
-            style={{ animationDelay: \`\${titleWords.length * 0.13 + 0.2 + subtitleDelay}s\`, opacity: subtitleVisible ? undefined : 0 }}
-          >
+          <div className={`transition-opacity duration-1000 ${subtitleVisible ? 'opacity-100' : 'opacity-0'}`}>
             {subtitle}
           </div>
         </div>
       </div>
 
-      <Canvas
-        flat
-        gl={async (props) => {
-          const renderer = new THREE.WebGPURenderer(props as any);
-          await renderer.init();
-          return renderer;
-        }}
-      >
-        <PostProcessing fullScreenEffect={true} />
+      <Canvas>
         <Scene />
       </Canvas>
     </div>
   );
-};`}
-                </pre>
-              </div>
-            </div>
-            
-            <div>
-              <h3 className="text-xl font-bold text-black mb-3">Install NPM dependencies:</h3>
-              <div className="bg-black border border-gray-300 rounded-lg p-4">
-                <code className="text-white font-mono">npm install three @react-three/fiber @react-three/drei</code>
-              </div>
-            </div>
-            
-            <div>
-              <h3 className="text-xl font-bold text-black mb-3">Implementation Guidelines</h3>
-              <ol className="space-y-2 text-gray-700 list-decimal list-inside">
-                <li>Analyze the component structure and identify all required dependencies</li>
-                <li>Review the component's arguments and state</li>
-                <li>Identify any required context providers or hooks and install them</li>
-              </ol>
-            </div>
-            
-            <div>
-              <h3 className="text-xl font-bold text-black mb-3">Questions to Ask</h3>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start space-x-2">
-                  <span className="text-gray-500 mt-1">•</span>
-                  <span>What data/props will be passed to this component?</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <span className="text-gray-500 mt-1">•</span>
-                  <span>Are there any specific state management requirements?</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <span className="text-gray-500 mt-1">•</span>
-                  <span>Are there any required assets (images, icons, etc.)?</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <span className="text-gray-500 mt-1">•</span>
-                  <span>What is the expected responsive behavior?</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <span className="text-gray-500 mt-1">•</span>
-                  <span>What is the best place to use this component in the app?</span>
-                </li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-xl font-bold text-black mb-3">Steps to integrate</h3>
-              <ol className="space-y-2 text-gray-700 list-decimal list-inside">
-                <li>Copy paste all the code above in the correct directories</li>
-                <li>Install external dependencies</li>
-                <li>Fill image assets with Unsplash stock images you know exist</li>
-                <li>Use lucide-react icons for svgs or logos if component requires them</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-        
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
-          <Button asChild size="lg" className="bg-black text-white hover:bg-gray-800 shadow-2xl border-0 px-8 py-6 text-lg font-semibold group">
-            <Link to="/login" className="flex items-center space-x-2">
-              <span>Get Started</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </Button>
-          <Button asChild variant="outline" size="lg" className="bg-white border-gray-300 text-black hover:bg-gray-100 px-8 py-6 text-lg font-semibold">
-            <Link to="/register">Create Account</Link>
-          </Button>
-        </div>
-      </div>
+};
 
-      {/* Simple Demo Section */}
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-8">
-          <h3 className="text-3xl font-bold text-black mb-4">Component Demo</h3>
-          <p className="text-gray-600 text-lg">Example of integrated component functionality</p>
-        </div>
-        
-        <div className="relative h-[400px] mb-12 flex items-center justify-center">
-          <div className="relative w-full max-w-2xl h-full rounded-3xl bg-white border border-gray-300 overflow-hidden shadow-2xl flex items-center justify-center">
-            <div className="text-center p-8">
-              <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Terminal className="w-8 h-8 text-white" />
-              </div>
-              <h4 className="text-2xl font-bold text-black mb-2">Component Ready</h4>
-              <p className="text-gray-600">Your React component integration workspace</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+export default Html;
+    }
   )
 }
-
-export default LandingPage
