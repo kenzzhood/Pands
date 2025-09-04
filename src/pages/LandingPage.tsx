@@ -60,3 +60,5 @@ const LandingPage = () => {
                 <span className="font-mono text-sm text-gray-800 font-semibold">hero-futuristic.tsx</span>
               </div>
               <p className="text-gray-600 italic">Component code available in /components/ui/hero-futuristic.tsx</p>
+  )
+}
