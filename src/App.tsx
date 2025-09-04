@@ -7,10 +7,9 @@ import { ModeToggle } from "./components/mode-toggle"
 
 function App() {
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden">
-      
-      <div className="relative z-10 container mx-auto p-6">
-        <header className="flex justify-between items-center py-6 backdrop-blur-sm bg-white/80 rounded-2xl border border-gray-300 mb-8 px-6">
+    <div className="min-h-screen bg-white">
+      <div className="container mx-auto p-6">
+        <header className="flex justify-between items-center py-6 bg-white border-b border-gray-200 mb-8 px-6">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 bg-black rounded-xl flex items-center justify-center">
               <span className="text-white font-bold text-lg">P</span>
@@ -24,7 +23,7 @@ function App() {
           </div>
           <ModeToggle />
         </header>
-        <main className="relative z-10">
+        <main>
           <Router>
             <Routes>
               <Route path="/" element={<LandingPage />} />
