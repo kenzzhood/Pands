@@ -39,7 +39,7 @@ const AudioUpload = () => {
       localStorage.setItem("lastUserId", userId)
       localStorage.setItem("lastBlogId", blogId)
       window.dispatchEvent(new CustomEvent("panda-context-updated"))
-      setMessage(res?.message || "Uploaded and ingested successfully.")
+      setMessage((res as any)?.message || "Uploaded and ingested successfully.")
     } catch (e: any) {
       setMessage(e?.message || "Upload failed.")
     }
