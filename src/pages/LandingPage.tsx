@@ -13,6 +13,8 @@ const LandingPage = () => {
           <Code className="w-4 h-4 text-gray-700" />
           <span className="text-sm font-medium text-gray-700">Component Integration Task</span>
         </div>
+      </div>
+    </div>
         
         <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6 text-black">
           React Component Integration
