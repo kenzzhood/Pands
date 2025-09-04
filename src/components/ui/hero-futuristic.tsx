@@ -1,80 +1,58 @@
-'use client';
-
-import React, { useRef, useMemo, useState, useEffect } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { useAspect, useTexture } from '@react-three/drei';
-import * as THREE from 'three';
-import { Mesh } from 'three';
-
-const TEXTUREMAP = { src: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=300&h=300&fit=crop' };
-const DEPTHMAP = { src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=300&fit=crop&auto=format' };
-
-const WIDTH = 300;
-const HEIGHT = 300;
-
-const Scene = () => {
-  const [rawMap, depthMap] = useTexture([TEXTUREMAP.src, DEPTHMAP.src]);
-  const meshRef = useRef<Mesh>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    if (rawMap && depthMap) {
-      setVisible(true);
-    }
-  }, [rawMap, depthMap]);
-
-  const material = useMemo(() => {
-    return new THREE.MeshBasicMaterial({
-      map: rawMap,
-      transparent: true,
-      opacity: 0.8,
-    });
-  }, [rawMap]);
-
-  const [w, h] = useAspect(WIDTH, HEIGHT);
-
-  useFrame(({ clock }) => {
-    if (meshRef.current && meshRef.current.material) {
-      const mat = meshRef.current.material as any;
-      if ('opacity' in mat) {
-        mat.opacity = visible ? 0.8 : 0;
-      }
-    }
-  });
-
-  const scaleFactor = 0.40;
-  return (
-    <mesh ref={meshRef} scale={[w * scaleFactor, h * scaleFactor, 1]} material={material}>
-      <planeGeometry />
-    </mesh>
-  );
-};
+import React, { useState, useEffect } from 'react'
 
 export const Html = () => {
-  const titleWords = 'Build Your Dreams'.split(' ');
-  const subtitle = 'AI-powered creativity for the next generation.';
-  const [visibleWords, setVisibleWords] = useState(0);
-  const [subtitleVisible, setSubtitleVisible] = useState(false);
+  const titleWords = 'Build Your Dreams'.split(' ')
+  const subtitle = 'AI-powered creativity for the next generation.'
+  const [visibleWords, setVisibleWords] = useState(0)
+  const [subtitleVisible, setSubtitleVisible] = useState(false)
 
   useEffect(() => {
     if (visibleWords < titleWords.length) {
-      const timeout = setTimeout(() => setVisibleWords(visibleWords + 1), 600);
-      return () => clearTimeout(timeout);
+      const timeout = setTimeout(() => setVisibleWords(visibleWords + 1), 600)
+      return () => clearTimeout(timeout)
     } else {
-      const timeout = setTimeout(() => setSubtitleVisible(true), 800);
-      return () => clearTimeout(timeout);
+      const timeout = setTimeout(() => setSubtitleVisible(true), 800)
+      return () => clearTimeout(timeout)
     }
-  }, [visibleWords, titleWords.length]);
+  }, [visibleWords, titleWords.length])
 
   return (
-    <div className="h-screen relative overflow-hidden bg-black">
+    <div className="h-screen relative overflow-hidden bg-gradient-to-br from-black via-purple-900/20 to-black">
+      {/* Animated background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-purple-500/10 to-pink-500/5 animate-pulse" />
+      
+      {/* Floating particles effect */}
+      <div className="absolute inset-0">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${2 + Math.random() * 3}s`
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* Main content */}
       <div className="h-screen uppercase items-center w-full absolute z-10 pointer-events-none px-10 flex justify-center flex-col">
         <div className="text-3xl md:text-5xl xl:text-6xl 2xl:text-7xl font-extrabold">
           <div className="flex space-x-2 lg:space-x-6 overflow-hidden text-white">
             {titleWords.map((word, index) => (
               <div
                 key={index}
-                className={`transition-opacity duration-1000 ${index < visibleWords ? 'opacity-100' : 'opacity-0'}`}
+                className={`transition-all duration-1000 transform ${
+                  index < visibleWords 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}
+                style={{ 
+                  transitionDelay: `${index * 200}ms`,
+                  textShadow: '0 0 20px rgba(139, 92, 246, 0.5)'
+                }}
               >
                 {word}
               </div>
@@ -82,25 +60,44 @@ export const Html = () => {
           </div>
         </div>
         <div className="text-xs md:text-xl xl:text-2xl 2xl:text-3xl mt-2 overflow-hidden text-white font-bold">
-          <div className={`transition-opacity duration-1000 ${subtitleVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <div 
+            className={`transition-all duration-1000 ${
+              subtitleVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-4'
+            }`}
+            style={{ 
+              transitionDelay: '1200ms',
+              textShadow: '0 0 15px rgba(236, 72, 153, 0.5)'
+            }}
+          >
             {subtitle}
           </div>
         </div>
       </div>
 
-      <button className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 text-white border border-white/30 px-6 py-3 rounded-full hover:bg-white/10 transition-all duration-300 flex items-center space-x-2">
+      {/* Scroll button */}
+      <button className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 text-white border border-white/30 px-6 py-3 rounded-full hover:bg-white/10 transition-all duration-300 flex items-center space-x-2 pointer-events-auto group">
         <span>Scroll to explore</span>
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg 
+          width="22" 
+          height="22" 
+          viewBox="0 0 22 22" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+          className="group-hover:translate-y-1 transition-transform duration-300"
+        >
           <path d="M11 5V17" stroke="white" strokeWidth="2" strokeLinecap="round"/>
           <path d="M6 12L11 17L16 12" stroke="white" strokeWidth="2" strokeLinecap="round"/>
         </svg>
       </button>
-
-      <Canvas className="absolute inset-0">
-        <Scene />
-      </Canvas>
+      
+      {/* Geometric shapes */}
+      <div className="absolute top-20 left-20 w-32 h-32 border border-cyan-500/20 rounded-full animate-spin" style={{ animationDuration: '20s' }} />
+      <div className="absolute bottom-20 right-20 w-24 h-24 border border-purple-500/20 rotate-45 animate-pulse" />
+      <div className="absolute top-1/2 right-10 w-16 h-16 border border-pink-500/20 rounded-lg animate-bounce" style={{ animationDuration: '3s' }} />
     </div>
-  );
-};
+  )
+}
 
-export default Html;
+export default Html
