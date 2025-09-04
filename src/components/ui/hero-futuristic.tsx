@@ -1,12 +1,10 @@
 'use client';
 
-import { Canvas, extend, useFrame, useThree } from '@react-three/fiber';
+import React, { useRef, useMemo, useState, useEffect } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useAspect, useTexture } from '@react-three/drei';
-import { useMemo, useRef, useState, useEffect } from 'react';
 import * as THREE from 'three';
 import { Mesh } from 'three';
-
-extend(THREE as any);
 
 const TEXTUREMAP = { src: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=300&h=300&fit=crop' };
 const DEPTHMAP = { src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=300&fit=crop&auto=format' };

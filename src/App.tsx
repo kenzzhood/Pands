@@ -7,18 +7,18 @@ import { ModeToggle } from "./components/mode-toggle"
 
 function App() {
   return (
-    <div className="min-h-screen bg-black relative overflow-hidden">
+    <div className="min-h-screen bg-white relative overflow-hidden">
       
       <div className="relative z-10 container mx-auto p-6">
-        <header className="flex justify-between items-center py-6 backdrop-blur-sm bg-black/40 rounded-2xl border border-gray-600 mb-8 px-6">
+        <header className="flex justify-between items-center py-6 backdrop-blur-sm bg-white/80 rounded-2xl border border-gray-300 mb-8 px-6">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
-              <span className="text-black font-bold text-lg">P</span>
+            <div className="w-10 h-10 bg-black rounded-xl flex items-center justify-center">
+              <span className="text-white font-bold text-lg">P</span>
             </div>
-            <h1 className="text-3xl font-black tracking-tight text-white">
+            <h1 className="text-3xl font-black tracking-tight text-black">
               PANDA
             </h1>
-            <span className="text-xs px-2 py-1 bg-gray-800 rounded-full border border-gray-600 text-gray-300 font-medium">
+            <span className="text-xs px-2 py-1 bg-gray-200 rounded-full border border-gray-300 text-gray-700 font-medium">
               BETA
             </span>
           </div>
