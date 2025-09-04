@@ -10,15 +10,21 @@ import { User, Building2, Lock, Mail } from "lucide-react"
 const LoginPage = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError("")
+    setIsLoading(true)
     try {
       await api.login({ username: email, password: password })
       navigate("/dashboard")
     } catch (error) {
-      console.error("Login failed:", error)
+      setError((error as Error).message)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -46,6 +52,12 @@ const LoginPage = () => {
                 <span className="font-semibold">Demo:</span> test@example.com / password123
               </p>
             </div>
+            
+            {error && (
+              <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-3 mb-6">
+                <p className="text-xs text-red-300 text-center">{error}</p>
+              </div>
+            )}
             
             <Tabs defaultValue="personal" className="w-full">
               <TabsList className="grid w-full grid-cols-2 bg-white/5 border border-white/10 p-1">
@@ -90,7 +102,7 @@ const LoginPage = () => {
                     </div>
                   </div>
                   <Button type="submit" className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white font-semibold py-6 rounded-xl shadow-lg shadow-purple-500/25 border-0">
-                    Sign In
+                    {isLoading ? "Signing In..." : "Sign In"}
                   </Button>
                 </form>
               </TabsContent>
@@ -126,7 +138,7 @@ const LoginPage = () => {
                     </div>
                   </div>
                   <Button type="submit" className="w-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-semibold py-6 rounded-xl shadow-lg shadow-pink-500/25 border-0">
-                    Sign In as Organization
+                    {isLoading ? "Signing In..." : "Sign In as Organization"}
                   </Button>
                 </form>
               </TabsContent>
