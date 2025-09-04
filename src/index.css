@@ -50,10 +50,10 @@
 
 @layer base {
   * {
-    @apply border-white/20;
+    @apply border-gray-600;
   }
   body {
-    @apply bg-slate-900 text-white;
+    @apply bg-black text-white;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   }
@@ -61,22 +61,10 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent;
   }
   
   .glass-card {
-    @apply bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20;
-  }
-  
-  .glow-cyan {
-    box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
-  }
-  
-  .glow-purple {
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
-  }
-  
-  .glow-pink {
-    box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+    @apply bg-gradient-to-br from-black/40 to-black/20 backdrop-blur-xl border border-gray-600;
   }
 }
