@@ -2,45 +2,118 @@ import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Globe } from "@/components/ui/globe"
-import { ArrowRight, Brain, Mic, MessageSquare, Sparkles, Code, Palette, Settings, CheckCircle, Terminal, FileText, Folder } from "lucide-react"
+import { ArrowRight, User, Building2, Code, Palette, Terminal } from "lucide-react"
 
 const LandingPage = () => {
   return (
     <div className="min-h-[80vh] space-y-16 pb-16">
-      {/* Hero Section with Globe */}
+      {/* Hero Section */}
       <div className="text-center max-w-6xl mx-auto mb-16 relative">
         <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 backdrop-blur-sm border border-cyan-500/20 rounded-full px-4 py-2 mb-8">
-          <Sparkles className="w-4 h-4 text-cyan-400" />
-          <span className="text-sm font-medium text-cyan-300">React Component Integration Guide</span>
+          <Code className="w-4 h-4 text-cyan-400" />
+          <span className="text-sm font-medium text-cyan-300">React Component Integration</span>
         </div>
         
-        <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-6">
+        <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">
           <span className="bg-gradient-to-r from-white via-cyan-200 to-purple-200 bg-clip-text text-transparent">
-            Component
+            Component Integration
           </span>
           <br />
           <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Integration
+            Task Guide
           </span>
         </h2>
         
-        <p className="text-xl text-slate-300 mb-12 leading-relaxed max-w-4xl mx-auto">
-          You are given a task to integrate an existing React component in the codebase
-        </p>
-
-        {/* Globe Component Demo */}
-        <div className="relative h-[400px] mb-12 flex items-center justify-center">
-          <div className="relative w-[400px] h-[400px] rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 overflow-hidden">
-            <Globe className="top-0" />
-            <div className="absolute bottom-4 left-4 right-4 text-center">
-              <span className="text-sm font-medium text-white bg-black/20 backdrop-blur-sm px-3 py-1 rounded-full">
-                Interactive Globe Component
-              </span>
+        <div className="max-w-4xl mx-auto space-y-6 text-left">
+          <p className="text-lg text-slate-300 leading-relaxed">
+            You are given a task to integrate an existing React component in the codebase
+          </p>
+          
+          <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-6">
+            <h3 className="text-xl font-bold text-white mb-4">The codebase should support:</h3>
+            <ul className="space-y-2 text-slate-300">
+              <li className="flex items-center space-x-3">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full" />
+                <span>shadcn project structure</span>
+              </li>
+              <li className="flex items-center space-x-3">
+                <div className="w-2 h-2 bg-purple-400 rounded-full" />
+                <span>Tailwind CSS</span>
+              </li>
+              <li className="flex items-center space-x-3">
+                <div className="w-2 h-2 bg-pink-400 rounded-full" />
+                <span>TypeScript</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div className="bg-gradient-to-br from-orange-500/10 to-red-500/5 backdrop-blur-xl border border-orange-500/20 rounded-2xl p-6">
+            <p className="text-slate-300 leading-relaxed">
+              If it doesn't, provide instructions on how to setup project via shadcn CLI, install Tailwind or TypeScript.
+            </p>
+          </div>
+          
+          <div className="bg-gradient-to-br from-emerald-500/10 to-teal-500/5 backdrop-blur-xl border border-emerald-500/20 rounded-2xl p-6">
+            <p className="text-slate-300 leading-relaxed mb-4">
+              Determine the default path for components and styles. If default path for components is not <code className="bg-slate-800/50 px-2 py-1 rounded text-emerald-300">/components/ui</code>, provide instructions on why it's important to create this folder.
+            </p>
+            <p className="text-slate-300 leading-relaxed">
+              Copy-paste this component to <code className="bg-slate-800/50 px-2 py-1 rounded text-emerald-300">/components/ui</code> folder:
+            </p>
+          </div>
+          
+          <div className="bg-slate-900/50 rounded-2xl p-6 border border-white/10">
+            <div className="flex items-center justify-between mb-4">
+              <h4 className="text-white font-semibold">fluid-blob.tsx</h4>
+              <span className="text-xs text-slate-400 bg-slate-800/50 px-2 py-1 rounded">React Three Fiber Component</span>
             </div>
+            <div className="bg-slate-800/80 rounded-lg p-4 max-h-40 overflow-y-auto">
+              <code className="text-cyan-300 text-sm">
+                {`import React, { useRef, useMemo } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import * as THREE from 'three';
+
+// Component code with shader implementation...
+// (Full implementation available in components/ui)`}
+              </code>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-br from-blue-500/10 to-indigo-500/5 backdrop-blur-xl border border-blue-500/20 rounded-2xl p-6">
+            <h4 className="text-white font-semibold mb-3">Install NPM dependencies:</h4>
+            <div className="bg-slate-900/50 rounded-lg p-4 border border-white/10">
+              <code className="text-blue-300 text-sm">npm install three @react-three/fiber</code>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-br from-violet-500/10 to-purple-500/5 backdrop-blur-xl border border-violet-500/20 rounded-2xl p-6">
+            <h4 className="text-white font-semibold mb-4">Implementation Guidelines</h4>
+            <ol className="space-y-2 text-slate-300 text-sm">
+              <li>1. Analyze the component structure and identify all required dependencies</li>
+              <li>2. Review the component's arguments and state</li>
+              <li>3. Identify any required context providers or hooks and install them</li>
+            </ol>
+            
+            <h5 className="text-white font-semibold mt-6 mb-3">Questions to Ask</h5>
+            <ul className="space-y-2 text-slate-300 text-sm">
+              <li>- What data/props will be passed to this component?</li>
+              <li>- Are there any specific state management requirements?</li>
+              <li>- Are there any required assets (images, icons, etc.)?</li>
+              <li>- What is the expected responsive behavior?</li>
+              <li>- What is the best place to use this component in the app?</li>
+            </ul>
+            
+            <h5 className="text-white font-semibold mt-6 mb-3">Steps to integrate</h5>
+            <ol className="space-y-2 text-slate-300 text-sm">
+              <li>0. Copy paste all the code above in the correct directories</li>
+              <li>1. Install external dependencies</li>
+              <li>2. Fill image assets with Unsplash stock images you know exist</li>
+              <li>3. Use lucide-react icons for svgs or logos if component requires them</li>
+            </ol>
           </div>
         </div>
         
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
           <Button asChild size="lg" className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white shadow-2xl shadow-purple-500/25 border-0 px-8 py-6 text-lg font-semibold group">
             <Link to="/login" className="flex items-center space-x-2">
               <span>Get Started</span>
@@ -53,7 +126,7 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Requirements Section */}
+      {/* Project Requirements Section */}
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h3 className="text-3xl font-bold text-white mb-4">Project Requirements</h3>
@@ -65,7 +138,7 @@ const LandingPage = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-3 text-white">
                 <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center">
-                  <Folder className="w-5 h-5 text-white" />
+                  <Terminal className="w-5 h-5 text-white" />
                 </div>
                 shadcn project structure
               </CardTitle>
@@ -105,285 +178,25 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Setup Instructions */}
+      {/* Globe Component Demo */}
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h3 className="text-3xl font-bold text-white mb-4">Setup Instructions</h3>
-          <p className="text-slate-300 text-lg">If your project doesn't meet the requirements, follow these steps:</p>
+          <h3 className="text-3xl font-bold text-white mb-4">Interactive Globe Component</h3>
+          <p className="text-slate-300 text-lg">Experience the integrated component in action</p>
         </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          <Card className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-xl">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-white">
-                <Terminal className="w-6 h-6 text-cyan-400" />
-                Project Setup via shadcn CLI
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="bg-slate-800/50 rounded-lg p-4 border border-white/10">
-                <code className="text-cyan-300 text-sm">npx shadcn@latest init</code>
+        
+        <div className="relative h-[500px] mb-12 flex items-center justify-center">
+          <div className="relative w-[500px] h-[500px] rounded-3xl bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 overflow-hidden shadow-2xl">
+            <Globe className="top-0" />
+            <div className="absolute bottom-6 left-6 right-6 text-center">
+              <div className="bg-black/20 backdrop-blur-sm rounded-xl px-4 py-2 border border-white/10">
+                <span className="text-sm font-medium text-white">
+                  Interactive 3D Globe • Drag to rotate
+                </span>
               </div>
-              <div className="bg-slate-800/50 rounded-lg p-4 border border-white/10">
-                <code className="text-purple-300 text-sm">npm install tailwindcss typescript</code>
-              </div>
-              <p className="text-slate-300 text-sm">Initialize your project with shadcn/ui structure and install required dependencies.</p>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-xl">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-white">
-                <Folder className="w-6 h-6 text-purple-400" />
-                Component Structure
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <p className="text-slate-300 text-sm font-medium">Default component path:</p>
-                <div className="bg-slate-800/50 rounded-lg p-3 border border-white/10">
-                  <code className="text-pink-300 text-sm">/components/ui</code>
-                </div>
-              </div>
-              <p className="text-slate-300 text-sm">
-                <strong className="text-white">Important:</strong> The /components/ui folder is essential for shadcn component organization and maintains consistency across the project.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-
-      {/* Integration Steps */}
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h3 className="text-3xl font-bold text-white mb-4">Integration Steps</h3>
-        </div>
-
-        <div className="space-y-6">
-          <Card className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-xl">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-white">
-                <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">
-                  0
-                </div>
-                Copy Component Files
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-slate-300 mb-4">Copy the Globe component to the correct directory:</p>
-              <div className="bg-slate-800/50 rounded-lg p-4 border border-white/10">
-                <code className="text-cyan-300 text-sm">src/components/ui/globe.tsx</code>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-xl">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-white">
-                <div className="w-8 h-8 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">
-                  1
-                </div>
-                Install Dependencies
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-slate-300 mb-4">Install the required external dependencies:</p>
-              <div className="bg-slate-800/50 rounded-lg p-4 border border-white/10">
-                <code className="text-purple-300 text-sm">npm install cobe</code>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-xl">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-white">
-                <div className="w-8 h-8 bg-gradient-to-br from-pink-400 to-pink-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">
-                  2
-                </div>
-                Asset Integration
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-slate-300 mb-4">Use stock images and icons as needed:</p>
-              <ul className="space-y-2 text-slate-300 text-sm">
-                <li className="flex items-center space-x-2">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
-                  <span>Unsplash stock images for visual assets</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
-                  <span>Lucide React icons for SVGs and logos</span>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-
-      {/* Implementation Guidelines */}
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h3 className="text-3xl font-bold text-white mb-4">Implementation Guidelines</h3>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <Card className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-xl">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-white">
-                <Settings className="w-6 h-6 text-cyan-400" />
-                Analysis & Planning
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-3">
-                <h4 className="text-white font-semibold">1. Analyze Component Structure</h4>
-                <p className="text-slate-300 text-sm">Identify all required dependencies and understand the component's architecture.</p>
-              </div>
-              <div className="space-y-3">
-                <h4 className="text-white font-semibold">2. Review Arguments & State</h4>
-                <p className="text-slate-300 text-sm">Understand props, state management, and data flow requirements.</p>
-              </div>
-              <div className="space-y-3">
-                <h4 className="text-white font-semibold">3. Identify Context & Hooks</h4>
-                <p className="text-slate-300 text-sm">Determine any required context providers or custom hooks needed.</p>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-xl">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-white">
-                <Brain className="w-6 h-6 text-purple-400" />
-                Key Questions
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <div className="flex items-start space-x-2">
-                  <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0" />
-                  <p className="text-slate-300 text-sm">What data/props will be passed to this component?</p>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0" />
-                  <p className="text-slate-300 text-sm">Are there any specific state management requirements?</p>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <div className="w-2 h-2 bg-pink-400 rounded-full mt-2 flex-shrink-0" />
-                  <p className="text-slate-300 text-sm">Are there any required assets (images, icons, etc.)?</p>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <div className="w-2 h-2 bg-emerald-400 rounded-full mt-2 flex-shrink-0" />
-                  <p className="text-slate-300 text-sm">What is the expected responsive behavior?</p>
-                </div>
-                <div className="flex items-start space-x-2">
-                  <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0" />
-                  <p className="text-slate-300 text-sm">What is the best place to use this component in the app?</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-
-      {/* Step-by-Step Integration */}
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h3 className="text-3xl font-bold text-white mb-4">Step-by-Step Integration</h3>
-        </div>
-
-        <div className="space-y-6">
-          {[
-            {
-              step: "0",
-              title: "Copy Component Code",
-              description: "Copy paste all the component code to the correct directories",
-              icon: FileText,
-              color: "from-cyan-400 to-cyan-600"
-            },
-            {
-              step: "1", 
-              title: "Install External Dependencies",
-              description: "Install any required npm packages and external libraries",
-              icon: Terminal,
-              color: "from-purple-400 to-purple-600"
-            },
-            {
-              step: "2",
-              title: "Fill Image Assets",
-              description: "Fill image assets with Unsplash stock images you know exist",
-              icon: Palette,
-              color: "from-pink-400 to-pink-600"
-            },
-            {
-              step: "3",
-              title: "Use Lucide Icons",
-              description: "Use lucide-react icons for SVGs or logos if component requires them",
-              icon: Sparkles,
-              color: "from-emerald-400 to-emerald-600"
-            }
-          ].map((item, index) => (
-            <Card key={index} className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-xl group hover:scale-[1.02] transition-all duration-300">
-              <CardContent className="p-8">
-                <div className="flex items-center space-x-6">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}>
-                    <span className="text-white font-black text-xl">{item.step}</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-xl font-bold text-white mb-2 flex items-center space-x-3">
-                      <item.icon className="w-5 h-5" />
-                      <span>{item.title}</span>
-                    </h4>
-                    <p className="text-slate-300 leading-relaxed">{item.description}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-
-      {/* Code Example Section */}
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h3 className="text-3xl font-bold text-white mb-4">Component Installation</h3>
-          <p className="text-slate-300 text-lg">Install the required NPM dependencies:</p>
-        </div>
-
-        <Card className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-xl">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3 text-white">
-              <Terminal className="w-6 h-6 text-cyan-400" />
-              NPM Dependencies
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="bg-slate-900/50 rounded-lg p-6 border border-white/10">
-              <pre className="text-cyan-300 text-sm">
-                <code>{`npm install cobe`}</code>
-              </pre>
             </div>
-            <p className="text-slate-300 text-sm mt-4">
-              This installs the COBE library required for the interactive 3D globe component.
-            </p>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Success Indicators */}
-      <div className="max-w-4xl mx-auto text-center">
-        <Card className="bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 backdrop-blur-xl border border-emerald-500/20 shadow-xl">
-          <CardContent className="p-8">
-            <div className="flex items-center justify-center space-x-3 mb-4">
-              <CheckCircle className="w-8 h-8 text-emerald-400" />
-              <h3 className="text-2xl font-bold text-white">Integration Complete</h3>
-            </div>
-            <p className="text-slate-300 text-lg leading-relaxed">
-              Your project now supports modern React component integration with shadcn/ui structure, 
-              Tailwind CSS styling, and TypeScript type safety. The Globe component has been successfully 
-              integrated and is ready for use throughout your application.
-            </p>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </div>
   )
